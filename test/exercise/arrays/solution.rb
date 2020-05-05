@@ -3,20 +3,20 @@ module Exercise
     class << self
       def replace(array)
         result = []
-        max = array.max()
-        array.each { |number|
+        max = array.max
+        array.each do |number|
             if number > 0
-                result.push(max)
+                result << max
             else
-                result.push(number)
+                result << number
             end
-        }
+        end
         return result
     end
 
       def search(_array, _query)
         low = 0
-        high = _array.length() - 1
+        high = _array.length - 1
         while low <= high
             index = (low + high) / 2
             number = _array[index]
