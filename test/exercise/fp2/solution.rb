@@ -6,37 +6,26 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
-        result = clone
-        index = 0
-        while index < result.length
-          yield result[index]
-          index += 1
+        for el in self
+          yield el
         end
-        result
       end
 
       # Написать свою функцию my_map
       def my_map
-        result = clone
-        index = 0
-        while index < result.length
-          result[index] = yield result[index]
-          index += 1
+        result = MyArray.new
+        for el in self
+          result << yield(el)
         end
-
         result
       end
 
       # Написать свою функцию my_compact
       def my_compact
-        result = clone
-        result.delete(nil)
-        result1 < self
-        index = 0
-        while insdex < self.length
-          result1[index] = self[index]
+        result = MyArray.new
+        for el in self
+          result << el if !el.nil?
         end
-        "result1 = #{result1}"
         result
       end
 
