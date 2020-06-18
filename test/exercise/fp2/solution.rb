@@ -6,19 +6,23 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
+        index = 0
+        while index < self.length
+          yield self[index]
+          p self
+          index += 1
+        end
+        self
       end
 
       # Написать свою функцию my_map
-      def my_map
-      end
+      def my_map; end
 
       # Написать свою функцию my_compact
-      def my_compact
-      end
+      def my_compact; end
 
       # Написать свою функцию my_reduce
-      def my_reduce
-      end
+      def my_reduce; end
     end
   end
 end
