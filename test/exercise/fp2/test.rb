@@ -28,12 +28,23 @@ class Exercise::Fp2Test < Minitest::Test
   end
 
   def test_my_compact
-    skip
     func = -> (element) { element if element.even? }
     func_another = -> (element) { element * @int }
     func_yet_another = -> (element) { element.even? }
+    p "@array = #{@array}"
+    p "compact = #{@array.map(&func).compact}"
+    p "@my_array = #{@my_array}"
+    p "compact = #{@my_array.my_map(&func).my_compact}"
     assert @array.map(&func).compact == @my_array.my_map(&func).my_compact
+    p "@array = #{@array}"
+    p "compact = #{@array.map(&func).compact.map(&func_another)}"
+    p "@my_array = #{@my_array}"
+    p "compact = #{@my_array.my_map(&func).my_compact.my_map(&func_another)}"
     assert @array.map(&func).compact.map(&func_another) == @my_array.my_map(&func).my_compact.my_map(&func_another)
+    p "@array = #{@array}"
+    p "compact = #{@array.map(&func_yet_another).compact}"
+    p "@my_array = #{@my_array}"
+    p "compact = #{@my_array.my_map(&func_yet_another).my_compact}"
     assert @array.map(&func_yet_another).compact == @my_array.my_map(&func_yet_another).my_compact
   end
 

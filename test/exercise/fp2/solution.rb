@@ -28,7 +28,17 @@ module Exercise
       end
 
       # Написать свою функцию my_compact
-      def my_compact; end
+      def my_compact
+        result = clone
+        result.delete(nil)
+        result1 < self
+        index = 0
+        while insdex < self.length
+          result1[index] = self[index]
+        end
+        "result1 = #{result1}"
+        result
+      end
 
       # Написать свою функцию my_reduce
       def my_reduce; end
