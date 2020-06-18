@@ -6,17 +6,26 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
+        result = clone
         index = 0
-        while index < self.length
-          yield self[index]
-          p self
+        while index < result.length
+          yield result[index]
           index += 1
         end
-        self
+        result
       end
 
       # Написать свою функцию my_map
-      def my_map; end
+      def my_map
+        result = clone
+        index = 0
+        while index < result.length
+          result[index] = yield result[index]
+          index += 1
+        end
+
+        result
+      end
 
       # Написать свою функцию my_compact
       def my_compact; end
