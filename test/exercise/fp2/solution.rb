@@ -14,18 +14,14 @@ module Exercise
       # Написать свою функцию my_map
       def my_map
         result = MyArray.new
-        for el in self
-          result << yield(el)
-        end
+        my_each { |el| result << yield(el) }
         result
       end
 
       # Написать свою функцию my_compact
       def my_compact
         result = MyArray.new
-        for el in self
-          result << el if !el.nil?
-        end
+        my_each { |el| result << el if !el.nil? }
         result
       end
 
