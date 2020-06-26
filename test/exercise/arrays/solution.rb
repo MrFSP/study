@@ -2,28 +2,20 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        result = []
-        max = array[0]
-
-        array.each { |number| max = number if number > max }
-
-        l = -> (number) { number.positive? ? max : number }
-        array.each { |number| result << l.call(number) }
-
-        result
+        array.map { |el| el > 0 ? 100 : el }
       end
 
       def search(_array, _query)
-        low = 0
-        high = _array.length - 1
-        while low <= high
-          index = (low + high) / 2
-          number = _array[index]
-          return index if number == _query
-          next high = index - 1 if number > _query
-          low = index + 1
+        def iter(min_index, max_index, array, query)
+          mid_index = (min_index + max_index) / 2
+          number = array[mid_index]
+          return mid_index if number == query
+          return -1 if min_index >= max_index
+          return iter(min_index, mid_index, array, query) if number > query
+          iter(mid_index + 1, max_index, array, query)
         end
-        -1
+
+        iter(0, _array.length - 1, _array, _query)
       end
     end
   end
